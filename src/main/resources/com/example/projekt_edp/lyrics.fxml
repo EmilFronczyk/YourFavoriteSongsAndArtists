@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1026.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_edp.controllers.LyricsController">
+   <children>
+      <VBox layoutX="678.0" layoutY="73.0" prefHeight="662.0" prefWidth="346.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="39.0" prefWidth="341.0" text="Artist" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
+               <content>
+                  <Label prefHeight="27.0" prefWidth="117.0" />
+               </content>
+            </ScrollPane>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="349.0" text="Song info" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
+               <content>
+                  <Label />
+               </content>
+            </ScrollPane>
+            <Label alignment="CENTER" prefHeight="39.0" prefWidth="369.0" text="Smilar songs" textFill="WHITE">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
+               <content>
+                  <Label />
+               </content>
+            </ScrollPane>
+         </children></VBox>
+      <VBox layoutY="73.0" prefHeight="645.0" prefWidth="128.0">
+         <children>
+            <Button id="button" fx:id="lyricsButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="72.0" prefWidth="220.0" style="-fx-background-color: black;" stylesheets="@css/style.css" text="Lyrics" textFill="WHITE">
+               <font>
+                  <Font name="MV Boli" size="23.0" />
+               </font>
+            </Button>
+            <Button id="button" fx:id="artistsButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onArtistsButtonClick" prefHeight="73.0" prefWidth="220.0" style="-fx-background-color: black;" stylesheets="@css/style.css" text="Artists" textFill="WHITE">
+               <font>
+                  <Font name="MV Boli" size="23.0" />
+               </font>
+            </Button>
+            <Button id="button" fx:id="favoritesButton" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onFavoritesButtonClick" prefHeight="98.0" prefWidth="220.0" style="-fx-background-color: black;" stylesheets="@css/style.css" text="Favorites" textFill="WHITE">
+               <font>
+                  <Font name="MV Boli" size="23.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <HBox prefHeight="73.0" prefWidth="1026.0" style="-fx-background-color: #00b359;">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="40.0" top="8.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../../images/music.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </HBox>
+      <ToolBar layoutX="128.0" layoutY="73.0" prefHeight="40.0" prefWidth="550.0" style="-fx-background-color: black;">
+        <items>
+          <Button id="searchButton" fx:id="searchButton" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="25.0" prefWidth="82.0" stylesheets="@css/style.css" text="Search" textFill="WHITE" />
+            <TextField id="input" fx:id="songTitle" prefHeight="29.0" prefWidth="214.0" promptText="Enter tittle of a song" style="-fx-border-radius: 10; -fx-background-color: black; -fx-border-color: #00b359; -fx-border-width: 2;" stylesheets="@css/style.css" />
+            <TextField id="input" fx:id="artistName" prefHeight="29.0" prefWidth="190.0" promptText="Enter name an artist" style="-fx-border-radius: 10; -fx-background-color: black; -fx-border-color: #00b359; -fx-border-width: 2;" stylesheets="@css/style.css" />
+            <Button fx:id="heartButton" mnemonicParsing="false" onAction="#onAHeartButtonClick" prefHeight="25.0" prefWidth="35.0" styleClass="heartButton" stylesheets="@css/style.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+        </items>
+      </ToolBar>
+      <ScrollPane layoutX="128.0" layoutY="113.0" prefHeight="623.0" prefWidth="541.0" styleClass="scrollPane" stylesheets="@css/style.css">
+         <content>
+            <Label fx:id="lyricsText" prefHeight="17.0" prefWidth="528.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
