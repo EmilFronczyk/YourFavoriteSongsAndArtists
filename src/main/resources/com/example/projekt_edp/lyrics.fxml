@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1026.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_edp.controllers.LyricsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1026.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projekt_edp.controllers.LyricsController">
    <children>
       <VBox layoutX="678.0" layoutY="73.0" prefHeight="662.0" prefWidth="346.0">
          <children>
@@ -19,7 +18,7 @@
             </Label>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
                <content>
-                  <Label prefHeight="27.0" prefWidth="117.0" />
+                  <Label fx:id="artistText" prefHeight="27.0" prefWidth="117.0" />
                </content>
             </ScrollPane>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="349.0" text="Song info" textFill="WHITE">
@@ -29,7 +28,7 @@
             </Label>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
                <content>
-                  <Label />
+                  <Label fx:id="songInfoText" prefHeight="17.0" prefWidth="0.0" />
                </content>
             </ScrollPane>
             <Label alignment="CENTER" prefHeight="39.0" prefWidth="369.0" text="Smilar songs" textFill="WHITE">
@@ -39,7 +38,7 @@
             </Label>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
                <content>
-                  <Label />
+                  <Label fx:id="similarText" />
                </content>
             </ScrollPane>
          </children></VBox>

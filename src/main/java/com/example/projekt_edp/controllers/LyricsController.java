@@ -18,6 +18,7 @@ public class LyricsController {
     private Scene artistsScene;
     private Scene favoritesScene;
     private  boolean isButtonClicked = false;
+    private FavoritesController favoritesPaneController;
     @javafx.fxml.FXML
     private Button lyricsButton;
     @javafx.fxml.FXML
@@ -34,7 +35,12 @@ public class LyricsController {
     private Button heartButton;
     @javafx.fxml.FXML
     private Label lyricsText;
-
+    @javafx.fxml.FXML
+    private Label artistText;
+    @javafx.fxml.FXML
+    private Label songInfoText;
+    @javafx.fxml.FXML
+    private Label similarText;
 
 
     public LyricsController(){
@@ -61,6 +67,10 @@ public class LyricsController {
         lyricsStage.setScene(this.favoritesScene);
     }
 
+    public void setFavoritesPaneController (FavoritesController favoritesPaneController) {
+        this.favoritesPaneController = favoritesPaneController;
+    }
+
     @javafx.fxml.FXML
     public void onArtistsButtonClick(ActionEvent actionEvent) {
         this.openArtistsScene(actionEvent);
@@ -74,6 +84,7 @@ public class LyricsController {
 
     @javafx.fxml.FXML
     public void onSearchButtonClick(ActionEvent actionEvent) {
+
     }
 
     @javafx.fxml.FXML

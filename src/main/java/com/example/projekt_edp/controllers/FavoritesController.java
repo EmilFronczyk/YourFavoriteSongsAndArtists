@@ -1,5 +1,6 @@
 package com.example.projekt_edp.controllers;
 
+import com.example.projekt_edp.DataBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -42,9 +43,9 @@ public class FavoritesController {
     private Label favoriteSongsText2;
 
     public FavoritesController() {
-        favoriteArtists = new ArrayList<>();
-        favoriteSongs = new ArrayList<>();
-        favoriteArtistsFromLyrics = new ArrayList<>();
+        this.favoriteArtists = new ArrayList<>();
+        this.favoriteSongs = new ArrayList<>();
+        this.favoriteArtistsFromLyrics = new ArrayList<>();
     }
     public void setLyricsScene(Scene scene) {
         lyricsScene = scene;
@@ -53,6 +54,77 @@ public class FavoritesController {
     public void setArtistsScene(Scene scene) {
         artistsScene = scene;
     }
+
+    public void addToFavoritesArtists(String name) {
+        if(!DataBase.readArtists().contains(name)) {
+            DataBase.updateToFavoriteArtists(name);
+            favoriteArtists = DataBase.readArtists();
+        }
+    }
+
+    public void addToFavoritesSongsAndArtists(String name, String title) {
+        if(!DataBase.readSongsAndArtists().get(0).contains(title) && !DataBase.readSongsAndArtists().get(1).contains(name)) {
+            DataBase.updateToFavoriteSongs(name, title);
+            favoriteSongs = DataBase.readSongsAndArtists().get(0);
+favoriteArtistsFromLyrics = DataBase.readSongsAndArtists().get(1);
+        }
+    }
+
+    public  void removeFromFavoritesArtists(String name) {
+        DataBase.deleteFromFavoriteArtists(name);
+        favoriteArtists=DataBase.readArtists();
+        showFavoriteSongsAndArtists();
+    }
+
+    public  void removeFromFavoritesArtistsByIndex(int index) {
+        removeFromFavoritesArtists(favoriteArtists.get(index));
+    }
+
+    public void removeFromFavoriteSongsAndArtists(String name, String title) {
+        DataBase.deleteFromFavoriteSongs(name, title);
+        favoriteSongs = DataBase.readSongsAndArtists().get(0);
+        favoriteArtistsFromLyrics = DataBase.readSongsAndArtists().get(1);
+        showFavoriteSongsAndArtists();
+    }
+
+    public  void removeFromFavoriteSongsAndArtistsByIndex(int index) {
+        removeFromFavoriteSongsAndArtists(favoriteArtistsFromLyrics.get(index), favoriteSongs.get(index));
+    }
+
+    public void showFavoriteSongsAndArtists() {
+String songAndArtists ="";
+String artists = "";
+favoriteSongs = DataBase.readSongsAndArtists().get(0);
+favoriteArtists  = DataBase.readArtists();
+favoriteArtistsFromLyrics = DataBase.readSongsAndArtists().get(1);
+
+if(!favoriteSongs.isEmpty()) {
+    for (int i = 0; i < favoriteSongs.size(); i++) {
+        songAndArtists += i+1 + ". " + favoriteSongs.get(i) + " - " + favoriteArtistsFromLyrics.get(i) + "\n";
+    }
+}
+
+        if(!favoriteArtists.isEmpty()) {
+            for (int i = 0; i < favoriteArtists.size(); i++) {
+                songAndArtists += i+1 + ". " + favoriteArtists.get(i) + "\n";
+            }
+        }
+        favoriteSongsText = new Label(songAndArtists);
+        favoriteArtistsText = new Label(artists);
+    }
+
+    public List<String> readFavoriteArtists() {
+        return favoriteArtists;
+    }
+
+    public List<String> readFavoriteSongs() {
+        return favoriteSongs;
+    }
+
+    public List<String> readFavoriteArtistsFromLyric() {
+        return favoriteArtistsFromLyrics;
+    }
+
     @FXML
     public void openLyricsScene(ActionEvent actionEvent) {
         Stage favoritesStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -67,10 +139,20 @@ public class FavoritesController {
 
     @javafx.fxml.FXML
     public void onRemoveSongClick(ActionEvent actionEvent) {
+int number = Integer.parseInt(artistNumber.getText());
+if(!(favoriteArtists.isEmpty()) && favoriteArtists.size() >= number && number> 0) {
+    removeFromFavoritesArtistsByIndex(number-1);
+    showFavoriteSongsAndArtists();
+}
     }
 
     @javafx.fxml.FXML
     public void onRemoveArtistClick(ActionEvent actionEvent) {
+        int number = Integer.parseInt(artistNumber.getText());
+        if(!(favoriteArtists.isEmpty()) && favoriteArtists.size() >= number && number> 0) {
+            removeFromFavoritesArtistsByIndex(number-1);
+            showFavoriteSongsAndArtists();
+        }
     }
 
     @javafx.fxml.FXML

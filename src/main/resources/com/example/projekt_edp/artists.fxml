@@ -55,7 +55,7 @@
       </HBox>
       <ToolBar layoutX="128.0" layoutY="73.0" prefHeight="40.0" prefWidth="550.0" style="-fx-background-color: black;">
         <items>
-          <Button fx:id="searchArtistButton" mnemonicParsing="false" onAction="#onSearchArtistButtonClick" prefHeight="25.0" prefWidth="82.0" style="-fx-border-width: 2; -fx-background-color: black; -fx-border-color: #00b359; -fx-border-radius: 8;" text="Search" textFill="WHITE" />
+          <Button id="searchButton" fx:id="searchArtistButton" mnemonicParsing="false" onAction="#onSearchArtistButtonClick" prefHeight="25.0" prefWidth="82.0" stylesheets="@css/style.css" text="Search" textFill="WHITE" />
             <TextField id="input" fx:id="artistName2" prefHeight="29.0" prefWidth="406.0" promptText="Enter name an artist" style="-fx-border-radius: 10; -fx-background-color: black; -fx-border-color: #00b359; -fx-border-width: 2;" stylesheets="@css/style.css" />
             <Button fx:id="heartButton2" mnemonicParsing="false" onAction="#onAHeartButtonClick2" prefHeight="25.0" prefWidth="35.0" styleClass="heartButton" stylesheets="@css/style.css">
                <opaqueInsets>
