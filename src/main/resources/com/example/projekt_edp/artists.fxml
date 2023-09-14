@@ -18,7 +18,7 @@
             </Label>
             <ScrollPane prefHeight="623.0" prefWidth="296.0" stylesheets="@css/style.css">
                <content>
-                  <Label fx:id="similarArtistsText" prefHeight="27.0" prefWidth="333.0" />
+                  <Label fx:id="similarArtistsText" alignment="TOP_LEFT" prefHeight="617.0" prefWidth="342.0" textFill="WHITE" wrapText="true" />
                </content>
             </ScrollPane>
          </children></VBox>
@@ -74,21 +74,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="158.0" layoutY="172.0" prefHeight="200.0" prefWidth="282.0" stylesheets="@css/style.css">
+      <ScrollPane layoutX="158.0" layoutY="172.0" prefHeight="200.0" prefWidth="513.0" stylesheets="@css/style.css">
          <content>
-            <Label fx:id="artistDescriptionText" prefHeight="17.0" prefWidth="276.0" textFill="WHITE" />
+            <Label fx:id="artistDescriptionText" prefHeight="198.0" prefWidth="507.0" textFill="WHITE" wrapText="true" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="158.0" layoutY="461.0" prefHeight="200.0" prefWidth="250.0" stylesheets="@css/style.css">
+      <ScrollPane layoutX="158.0" layoutY="461.0" prefHeight="238.0" prefWidth="513.0" stylesheets="@css/style.css">
          <content>
-            <Label fx:id="topAlbumText" prefHeight="17.0" prefWidth="247.0" textFill="WHITE" />
+            <Label fx:id="topAlbumText" prefHeight="235.0" prefWidth="510.0" textFill="WHITE" wrapText="true" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="422.0" layoutY="461.0" prefHeight="200.0" prefWidth="232.0" stylesheets="@css/style.css">
-         <content>
-            <Label fx:id="topAlbumText2" prefHeight="17.0" prefWidth="229.0" textFill="WHITE" />
-         </content>
-      </ScrollPane>
-      <ImageView fx:id="albumPhoto" fitHeight="200.0" fitWidth="197.0" layoutX="469.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

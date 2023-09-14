@@ -43,6 +43,9 @@ public class HelloApplication extends Application {
         // injecting artists scene into the controller of the favorites scene
         favoritesPaneController.setArtistsScene(artistsScene);
 
+        artistsPaneController.setFavoritesPaneController(favoritesPaneController);
+        lyricsPaneController.setFavoritesPaneController(favoritesPaneController);
+
         stage.setTitle("YoursFavSongs&Artists!");
         stage.setScene(lyricsScene);
         stage.show();

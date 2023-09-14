@@ -102,9 +102,9 @@ if (!name.isBlank()) {
 this.description = ArtistsInfo.fetchArtistInfo(this.name.replaceAll("\\s+", "%20"));
 int startIndex = description.indexOf("<a");
 int endIndex = description.indexOf("a>");
-String deleteSpecialCharacter = description.substring(startIndex,endIndex+1);
+String deleteSpecialCharacter = description.substring(startIndex,endIndex+2);
 String textWithoutSpecialCharacter = description.replace(deleteSpecialCharacter, "");
-artistDescriptionText = new Label(textWithoutSpecialCharacter);
+artistDescriptionText.setText(textWithoutSpecialCharacter);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -120,35 +120,63 @@ artistDescriptionText = new Label(textWithoutSpecialCharacter);
                     for (int i = 0; i < this.topAlbums.get(0).size(); i++) {
 top += this.topAlbums.get(0).get(i) + "\n";
                     }
-                    topAlbumText = new Label(top);
+                    topAlbumText.setText(top);
                 } else {
-                    topAlbumText = new Label("Album Not Found");
+                    topAlbumText.setText("Album Not Found");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }).start();
+
+//    Thread thread1 = new Thread(() -> {
+//        Platform.runLater(() -> {
+//            try {
+//                System.out.println("Sranie orzed");
+//                System.out.println("Uruchomiono watek set image");
+//                String adres = ArtistsInfo.fetchArtistPhoto(this.name.replaceAll("\\s+", "%20"));
+//                System.out.println("Cos po funckji");
+//                Image obraz = new Image (ArtistsInfo.fetchArtistPhoto(this.name.replaceAll("\\s+", "%20")));
+//                //albumPhoto.setImage(new Image(ArtistsInfo.fetchArtistPhoto(this.name.replaceAll("\\s+", "%20"))));
+//                albumPhoto.setImage(obraz);
+//            } catch (Exception e) {
+//                albumPhoto.setImage(new Image("https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg"));
+//                System.out.println("Sranie w catch");
+//            }
+//        });
+//    });
+//    thread1.start();
+//    new Thread(() -> {
+//        Platform.runLater(() -> {
+//            try {
+//                System.out.println("Uruchomiono watek set image");
+//                albumPhoto.setImage(new Image(ArtistsInfo.fetchArtistPhoto(this.name.replaceAll("\\s+", "%20"))));
+//            } catch (Exception e) {
+//                albumPhoto.setImage(new Image("https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg"));
+//            }
+//        });
+//    }).start();
 
     new Thread(() -> {
         Platform.runLater(() -> {
             try {
-                this.topAlbums = ArtistsInfo.fetchTopAlbums(this.name.replaceAll("\\s+", "%20"));
-                if(!this.topAlbums.isEmpty()) {
+                System.out.println("Watek od smilar artists");
+                this.similarArtists = ArtistsInfo.fetchSimilarArtists(this.name.replaceAll("\\s+", "%20"));
+                if(!this.similarArtists.isEmpty()) {
                     String top = "";
-                    for (int i = 0; i < this.topAlbums.get(0).size(); i++) {
-                        top += this.topAlbums.get(0).get(i) + "\n";
+                    for (int i = 0; i < this.similarArtists.size(); i++) {
+                        top += this.similarArtists.get(i) + "\n";
                     }
-                    topAlbumText = new Label(top);
+                    similarArtistsText.setText(top);
                 } else {
-                    topAlbumText = new Label("Album Not Found");
+                    similarArtistsText.setText("Similar artists not found");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }).start();
-
 }
     }
 

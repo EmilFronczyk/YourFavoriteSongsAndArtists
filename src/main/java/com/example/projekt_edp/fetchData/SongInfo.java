@@ -68,11 +68,18 @@ public class SongInfo {
 
     public static String fetchSongInfo(String name, String title) throws Exception{
         StringBuffer response = fetchTrackData(name, title);
-        JSONObject res = new JSONObject(response.toString());
-        JSONObject track = new JSONObject(res.getString("track"));
+        //JSONObject res = new JSONObject(response.toString());
+        String jsonString = response.toString();
+        JSONObject res = new JSONObject(jsonString);
+        System.out.println("res json = " + res);
+        //JSONObject track = new JSONObject(res.getString("track"));
+        JSONObject track = res.getJSONObject("track");
+        System.out.println("track json = " + track);
         JSONObject wiki;
         if(track.has("wiki")) {
-            wiki = new JSONObject(track.getString("wiki"));
+            //wiki = new JSONObject(track.getString("wiki"));
+            System.out.println("weszlo do if'a wiki");
+            wiki = track.getJSONObject("wiki");
             return wiki.getString("summary");
         } else {
             return "Not found";
@@ -84,9 +91,13 @@ public class SongInfo {
         StringBuffer response = fetchSimilarData(name, title);
 
         JSONObject res = new JSONObject(response.toString());
-        JSONObject track = new JSONObject(res.getString("similartracks"));
+        System.out.println("res json = " + res);
+        //JSONObject track = new JSONObject(res.getString("similartracks"));
+        JSONObject track = res.getJSONObject("similartracks");
+        System.out.println("track json = " + track);
 
         JSONArray songsArray = track.getJSONArray("track");
+        System.out.println("songsArray json = " + songsArray);
         List<List<String>> result = new ArrayList<>();
         if(songsArray.length() == 0) {
             return result;
@@ -97,7 +108,9 @@ public class SongInfo {
             songTitleList.add(songsArray.getJSONObject(i).getString("name"));
         }
         for(int i = 0 ; i < songsArray.length() ; i++){
-            songArtistList.add(songsArray.getJSONObject(i).getString("artist"));
+            //songArtistList.add(songsArray.getJSONObject(i).getString("artist"));
+            System.out.println("songsArray.getJSONObject(i) = "+songsArray.getJSONObject(i));
+            songArtistList.add(String.valueOf(songsArray.getJSONObject(i).getJSONObject("artist")));
         }
         JSONObject artistName;
         List<String> songArtistNameList = new ArrayList<>();

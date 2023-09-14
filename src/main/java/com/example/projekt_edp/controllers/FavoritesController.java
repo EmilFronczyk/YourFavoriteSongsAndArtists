@@ -16,6 +16,7 @@ import java.util.List;
 public class FavoritesController {
     private Scene lyricsScene;
     private Scene artistsScene;
+
     private List<String> favoriteArtists;
     private List<String> favoriteSongs;
     private List<String> favoriteArtistsFromLyrics;

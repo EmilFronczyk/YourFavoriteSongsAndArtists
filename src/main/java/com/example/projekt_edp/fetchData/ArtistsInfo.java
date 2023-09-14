@@ -51,7 +51,8 @@ public class ArtistsInfo {
     }
 
     private static StringBuffer fetchArtistPhotoData(String name) throws IOException {
-        String url = "https://www.theaudiodb.com/api/v1/json/2/search.php?s=" + name;
+        //String url = "https://www.theaudiodb.com/api/v1/json/2/search.php?s=" + name;
+        String url = "https://www.theaudiodb.com/api/v1/json/2/search.php?s=acdc";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
@@ -69,11 +70,16 @@ public class ArtistsInfo {
     }
 
     public static String fetchArtistPhoto(String name) throws Exception{
+        System.out.println("ebe");
         StringBuffer response = fetchArtistPhotoData(name);
+        System.out.println("response from fetch photo " + response);
         JSONObject res = new JSONObject(response.toString());
         JSONArray artistsArray;
+        System.out.println("Weszło fetch foto");
         try {
+            System.out.println("Weszło do try'a");
             artistsArray = res.getJSONArray("artists");
+            System.out.println("Artist array = " + artistsArray);
         } catch(Exception e) {
             return "not found";
         }
@@ -84,31 +90,39 @@ public class ArtistsInfo {
 
     public static String fetchArtistInfo(String name) throws Exception{
         StringBuffer response = fetchArtistData(name);
-        JSONObject res = new JSONObject(response.toString());
+        String jsonString = response.toString();
+        JSONObject res = new JSONObject(jsonString);
         String result;
         if(!res.has("artist")) {
             return "Not found";
         }
-        JSONObject artists = new JSONObject(res.getString("artist"));
-        JSONObject info = new JSONObject(artists.getString("bio"));
+        //JSONObject artists = new JSONObject(res.getString("artist"));
+        JSONObject artists = res.getJSONObject("artist");
+        //JSONObject info = new JSONObject(artists.getString("bio"));
+        JSONObject info = artists.getJSONObject("bio");
         result = info.getString("summary");
         return result;
     }
 
     public static List<String> fetchSimilarArtists(String name) throws Exception{
         StringBuffer response = fetchArtistData(name);
-        List<String> artistsList = new ArrayList<String>();
+        List<String> artistsList = new ArrayList<>();
         JSONObject res = new JSONObject(response.toString());
         if(!res.has("artist")) {
             return artistsList;
         }
-        JSONObject artist = new JSONObject(res.getString("artist"));
-        JSONObject similar = new JSONObject(artist.getString("similar"));
+        //JSONObject artist = new JSONObject(res.getString("artist"));
+        JSONObject artist = res.getJSONObject("artist");
+        System.out.println("artistr json = "+artist);
+        //JSONObject similar = new JSONObject(artist.getString("similar"));
+        JSONObject similar = artist.getJSONObject("similar");
 
         JSONArray artistsArray = similar.getJSONArray("artist");
+        System.out.println("artists array json = "+artistsArray);
         for(int i = 0 ; i < artistsArray.length() ; i++){
             artistsList.add(artistsArray.getJSONObject(i).getString("name"));
         }
+        System.out.println("arrayList = "+artistsList);
         return artistsList;
     }
 
@@ -120,11 +134,12 @@ public class ArtistsInfo {
         if(!res.has("topalbums")) {
             return result;
         }
-        JSONObject topAlbums = new JSONObject(res.getString("topalbums"));
+        //JSONObject topAlbums = new JSONObject(res.getString("topalbums"));
+        JSONObject topAlbums = res.getJSONObject("topalbums");
 
         JSONArray albums = topAlbums.getJSONArray("album");
-        List<String> albumTitleList = new ArrayList<String>();
-        List<String> albumUrlList = new ArrayList<String>();
+        List<String> albumTitleList = new ArrayList<>();
+        List<String> albumUrlList = new ArrayList<>();
         for(int i = 0 ; i < albums.length() ; i++){
             albumTitleList.add(albums.getJSONObject(i).getString("name"));
         }

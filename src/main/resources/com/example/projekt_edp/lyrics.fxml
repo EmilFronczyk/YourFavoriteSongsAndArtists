@@ -18,7 +18,7 @@
             </Label>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
                <content>
-                  <Label fx:id="artistText" prefHeight="27.0" prefWidth="117.0" />
+                  <Label fx:id="artistText" prefHeight="177.0" prefWidth="344.0" textFill="WHITE" wrapText="true" />
                </content>
             </ScrollPane>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="349.0" text="Song info" textFill="WHITE">
@@ -28,7 +28,7 @@
             </Label>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
                <content>
-                  <Label fx:id="songInfoText" prefHeight="17.0" prefWidth="0.0" />
+                  <Label fx:id="songInfoText" prefHeight="179.0" prefWidth="342.0" textFill="WHITE" wrapText="true" />
                </content>
             </ScrollPane>
             <Label alignment="CENTER" prefHeight="39.0" prefWidth="369.0" text="Smilar songs" textFill="WHITE">
@@ -38,7 +38,7 @@
             </Label>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@css/style.css">
                <content>
-                  <Label fx:id="similarText" />
+                  <Label fx:id="similarText" prefHeight="176.0" prefWidth="344.0" textFill="WHITE" wrapText="true" />
                </content>
             </ScrollPane>
          </children></VBox>

@@ -11,11 +11,13 @@ public class Lyrics {
     public Lyrics () {}
 
     public static String fetchLyrics(String name, String title) throws Exception{
-        String url = "https://api.lyrics.ovh/v1/" + name + "/" + title;
+        //String url = "https://api.lyrics.ovh/v1/" + name + "/" + title;
+        String url = "http://api.chartlyrics.com/apiv1.asmx/SearchLyricDirect?artist="+name+"&song="+title;
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
+        System.out.println("respone code dla tekstu piosenki = " + responseCode);
         if(responseCode != 200)
             return "Not found";
         System.out.println("\nSending 'GET' request to URL : " + url);
@@ -26,6 +28,7 @@ public class Lyrics {
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
+        System.out.println("respone " + response);
         in.close();
         JSONObject myResponse = new JSONObject(response.toString());
         return myResponse.getString("lyrics");

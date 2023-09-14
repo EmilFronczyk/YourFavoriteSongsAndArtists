@@ -99,7 +99,7 @@ artistList.add(result.getString(1));
         try {
             con = DriverManager.getConnection(url,usrName,passwd);
             Statement statement = con.createStatement();
-            statement.executeUpdate("INSERT INTO FavoriteArtists (ArtistName) VALUE ('"+name+"')");
+            statement.executeUpdate("INSERT INTO `FavoriteArtists` (ArtistName) VALUE ('"+name+"')");
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();

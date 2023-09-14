@@ -10,13 +10,18 @@
 
 #button:pressed{
     -fx-text-fill: #00b359;
+    -fx-text-fill: white;
 }
+
 #input:focused {
     -fx-background-color: transparent;
     -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
 }
+
 #input {
     -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
     -fx-border-radius: 10px;
     -fx-background-color: black;
     -fx-border-color: #00b359;
@@ -39,10 +44,12 @@
 }
 .scroll-pane > .viewport {
     -fx-background-color: transparent;
+    /*-fx-background-color: white;*/
 }
 
 .scroll-pane {
     -fx-background-color: transparent;
+    /*-fx-background-color: white;*/
 }
 
 .heartButton {
