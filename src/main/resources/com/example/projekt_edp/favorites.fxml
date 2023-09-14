@@ -91,24 +91,14 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="158.0" layoutY="154.0" prefHeight="188.0" prefWidth="288.0" stylesheets="@css/style.css">
+      <ScrollPane layoutX="158.0" layoutY="154.0" prefHeight="188.0" prefWidth="505.0" stylesheets="@css/style.css">
          <content>
-            <Label fx:id="favoriteSongsText" prefHeight="17.0" prefWidth="276.0" textFill="WHITE" />
+            <Label fx:id="favoriteSongsText" alignment="TOP_LEFT" prefHeight="182.0" prefWidth="501.0" textFill="WHITE" wrapText="true" />
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="158.0" layoutY="461.0" prefHeight="200.0" prefWidth="250.0" stylesheets="@css/style.css">
+      <ScrollPane layoutX="158.0" layoutY="461.0" prefHeight="200.0" prefWidth="505.0" stylesheets="@css/style.css">
          <content>
-            <Label fx:id="favoriteArtistsText" prefHeight="17.0" prefWidth="247.0" textFill="WHITE" />
-         </content>
-      </ScrollPane>
-      <ScrollPane layoutX="422.0" layoutY="461.0" prefHeight="200.0" prefWidth="232.0" stylesheets="@css/style.css">
-         <content>
-            <Label fx:id="favoriteArtistsText2" prefHeight="17.0" prefWidth="229.0" textFill="WHITE" />
-         </content>
-      </ScrollPane>
-      <ScrollPane layoutX="446.0" layoutY="154.0" prefHeight="200.0" prefWidth="232.0" stylesheets="@css/style.css">
-         <content>
-            <Label fx:id="favoriteSongsText2" prefHeight="17.0" prefWidth="229.0" textFill="WHITE" />
+            <Label fx:id="favoriteArtistsText" alignment="TOP_LEFT" prefHeight="196.0" prefWidth="500.0" textFill="WHITE" wrapText="true" />
          </content>
       </ScrollPane>
    </children>

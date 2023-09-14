@@ -30,7 +30,11 @@ public class Lyrics {
         }
         System.out.println("respone " + response);
         in.close();
-        JSONObject myResponse = new JSONObject(response.toString());
-        return myResponse.getString("lyrics");
+        String myResponse = response.substring(response.indexOf("<Lyric>")+7);
+        myResponse = myResponse.substring(0, myResponse.indexOf("</Lyric>"));
+//        JSONObject myResponse = new JSONObject(response.toString());
+//        return myResponse.getString("lyrics");
+        System.out.println("myResponse = "+myResponse);
+        return myResponse;
     }
 }

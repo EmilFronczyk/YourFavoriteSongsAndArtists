@@ -90,7 +90,7 @@
       </ToolBar>
       <ScrollPane layoutX="128.0" layoutY="113.0" prefHeight="623.0" prefWidth="541.0" styleClass="scrollPane" stylesheets="@css/style.css">
          <content>
-            <Label fx:id="lyricsText" prefHeight="17.0" prefWidth="528.0" />
+            <Label fx:id="lyricsText" alignment="TOP_LEFT" prefHeight="617.0" prefWidth="538.0" textFill="WHITE" wrapText="true" />
          </content>
       </ScrollPane>
    </children>

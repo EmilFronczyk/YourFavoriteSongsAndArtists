@@ -107,11 +107,11 @@ if(!favoriteSongs.isEmpty()) {
 
         if(!favoriteArtists.isEmpty()) {
             for (int i = 0; i < favoriteArtists.size(); i++) {
-                songAndArtists += i+1 + ". " + favoriteArtists.get(i) + "\n";
+                artists += i+1 + ". " + favoriteArtists.get(i) + "\n";
             }
         }
-        favoriteSongsText = new Label(songAndArtists);
-        favoriteArtistsText = new Label(artists);
+        favoriteSongsText.setText(songAndArtists);
+        favoriteArtistsText.setText(artists);
     }
 
     public List<String> readFavoriteArtists() {
@@ -140,9 +140,10 @@ if(!favoriteSongs.isEmpty()) {
 
     @javafx.fxml.FXML
     public void onRemoveSongClick(ActionEvent actionEvent) {
-int number = Integer.parseInt(artistNumber.getText());
-if(!(favoriteArtists.isEmpty()) && favoriteArtists.size() >= number && number> 0) {
-    removeFromFavoritesArtistsByIndex(number-1);
+        System.out.println("artistNumber.getText() = " + songNumber.getText());
+        int number = Integer.parseInt(songNumber.getText());
+if(!(favoriteArtistsFromLyrics.isEmpty()) && favoriteArtistsFromLyrics.size() >= number && number> 0) {
+    removeFromFavoriteSongsAndArtistsByIndex(number-1);
     showFavoriteSongsAndArtists();
 }
     }

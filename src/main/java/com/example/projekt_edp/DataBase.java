@@ -20,6 +20,7 @@ public class DataBase {
             ResultSet tableFavoriteArtists = dbm.getTables(null, null, "FavoriteArtists", null);
             if (!tableFavoriteSongs.next()) { //Table Favorite Songs does not exists
                 System.out.println("Table Favorite Songs doesn't exists");
+                System.out.println("tableFavoriteSongs.next() = " + tableFavoriteSongs.next());
                 String sqlFavoriteSongs = "CREATE TABLE FavoriteSongs " +
                         "(Title VARCHAR(100) NOT NULL, " +
                         " ArtistName VARCHAR(100) NOT NULL, " +
@@ -38,7 +39,8 @@ public class DataBase {
             con.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Tabela istnieje");
         }
     }
     public static List<String> readArtists (){
@@ -88,7 +90,7 @@ artistList.add(result.getString(1));
         try {
             con = DriverManager.getConnection(url,usrName,passwd);
             Statement statement = con.createStatement();
-            statement.executeUpdate("INSERT INTO FavoriteSongs (Title,ArtistName) VALUE ('"+title+"','"+name+"')");
+            statement.executeUpdate("INSERT INTO FavoriteSongs (Title,ArtistName) VALUES ('"+title+"','"+name+"')");
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,7 +101,7 @@ artistList.add(result.getString(1));
         try {
             con = DriverManager.getConnection(url,usrName,passwd);
             Statement statement = con.createStatement();
-            statement.executeUpdate("INSERT INTO `FavoriteArtists` (ArtistName) VALUE ('"+name+"')");
+            statement.executeUpdate("INSERT INTO FavoriteArtists (ArtistName) VALUES ('"+name+"')");
             con.close();
         } catch (SQLException e) {
             e.printStackTrace();
